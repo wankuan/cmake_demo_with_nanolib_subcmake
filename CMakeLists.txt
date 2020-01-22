@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(demo)
-
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_SIZE arm-none-eabi-size)
@@ -54,20 +54,19 @@ set(CMAKE_EXE_LINKER_FLAGS
  #"--specs=nano.specs -specs=nosys.specs -nostartfiles -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
  "-lc -lm -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
 )
+
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/target)
+
 add_executable(${PROJECT_NAME}.elf ${SRCS})
-target_link_libraries(${PROJECT_NAME}.elf PUBLIC STM32F4_HAL_LIB)
-set(ELF_FILE ${PROJECT_BINARY_DIR}/${execute_dir}/${PROJECT_NAME}.elf)
-set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
-set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
+target_link_libraries(${PROJECT_NAME}.elf PUBLIC STM32F4_HAL)
+set(ELF_FILE ${EXECUTABLE_OUTPUT_PATH}/${PROJECT_NAME}.elf)
+set(HEX_FILE ${EXECUTABLE_OUTPUT_PATH}/${PROJECT_NAME}.hex)
+set(BIN_FILE ${EXECUTABLE_OUTPUT_PATH}/${PROJECT_NAME}.bin)
 
 add_custom_command(TARGET "${PROJECT_NAME}.elf" POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -Obinary ${ELF_FILE} ${BIN_FILE}
     COMMAND ${CMAKE_OBJCOPY} -Oihex  ${ELF_FILE} ${HEX_FILE}
     COMMENT "Building ${PROJECT_NAME}.bin and ${PROJECT_NAME}.hex"
-
-    COMMAND ${CMAKE_COMMAND} -E copy ${HEX_FILE} "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.hex"
-    COMMAND ${CMAKE_COMMAND} -E copy ${BIN_FILE} "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.bin"
-
-    COMMAND ${CMAKE_SIZE} --format=berkeley ${PROJECT_NAME}.elf ${PROJECT_NAME}.hex
+    COMMAND ${CMAKE_SIZE} --format=berkeley ${ELF_FILE} ${HEX_FILE}
     COMMENT "Invoking: Cross ARM GNU Print Size"
 )
