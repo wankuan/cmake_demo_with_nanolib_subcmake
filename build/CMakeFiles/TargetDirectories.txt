@@ -1,6 +1,0 @@
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/CMakeFiles/rebuild_cache.dir
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/CMakeFiles/edit_cache.dir
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/CMakeFiles/demo.elf.dir
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/STM32F4xx_HAL_Driver/CMakeFiles/rebuild_cache.dir
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/STM32F4xx_HAL_Driver/CMakeFiles/edit_cache.dir
-/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/STM32F4xx_HAL_Driver/CMakeFiles/STM32F4_HAL_LIB.dir
