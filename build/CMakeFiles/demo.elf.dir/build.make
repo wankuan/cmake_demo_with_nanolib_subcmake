@@ -219,8 +219,8 @@ demo.elf: CMakeFiles/demo.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable demo.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Invoking: Cross ARM GNU Print Size"
-	arm-none-eabi-objcopy -Obinary /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.elf /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.bin
-	arm-none-eabi-objcopy -Oihex /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.elf /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.hex
+	arm-none-eabi-objcopy -Obinary /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/target/demo.elf /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.bin
+	arm-none-eabi-objcopy -Oihex /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/target/demo.elf /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.hex
 	/usr/cmake-3.16.2-Linux-x86_64/bin/cmake -E copy /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.hex /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.hex
 	/usr/cmake-3.16.2-Linux-x86_64/bin/cmake -E copy /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.bin /home/wankuan/STM32/cmake_demo_with_nanolib_subcmake/build/demo.bin
 	arm-none-eabi-size --format=berkeley demo.elf demo.hex

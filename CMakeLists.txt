@@ -45,19 +45,6 @@ SET(SRCS
     BSP/src/USART_COM.c
     CMSIS/src/system_stm32f4xx.c
     newlib/syscalls.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c
-    # STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
 )
 add_subdirectory(STM32F4xx_HAL_Driver)
 
@@ -67,11 +54,9 @@ set(CMAKE_EXE_LINKER_FLAGS
  #"--specs=nano.specs -specs=nosys.specs -nostartfiles -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
  "-lc -lm -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
 )
-
 add_executable(${PROJECT_NAME}.elf ${SRCS})
 target_link_libraries(${PROJECT_NAME}.elf PUBLIC STM32F4_HAL_LIB)
-
-set(ELF_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.elf)
+set(ELF_FILE ${PROJECT_BINARY_DIR}/${execute_dir}/${PROJECT_NAME}.elf)
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
